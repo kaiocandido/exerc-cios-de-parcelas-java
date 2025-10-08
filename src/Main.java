@@ -42,14 +42,14 @@ public class Main {
 
                 itemCsv = br.readLine();
             }
-
-            try(BufferedWriter bw = new BufferedWriter(new FileWriter(targtFileStr)){
-
-            }catch (IOException e ){
-                System.out.println(e.getMessage());
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(targtFileStr))) {
+                for (Product items : list) {
+                    bw.write(items.getName() + "," + String.format("%.2f", items.total()));
+                    bw.newLine();
+                }
             }
-
-        }catch (IOException e){
+        }
+        catch (IOException e){
             System.out.println(e.getMessage());
         }
 
